@@ -1,0 +1,126 @@
+<!-- HEADER -->
+<header>
+  <!-- top Header -->
+  <div id="top-header">
+    <div class="container">
+      <div class="pull-left">
+        <span>Welcome !</span>
+      </div>
+      
+    </div>
+  </div>
+  <!-- /top Header -->
+
+  <!-- header -->
+  <div id="header">
+    <div class="container">
+      <div class="pull-left">
+        <!-- Logo -->
+        <div class="header-logo">
+          <a class="logo" href="./home">
+            <img src="images/logo.jpg" alt="">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Search -->
+        <div class="header-search">
+          <form action="./search" method="POST" class="search">
+            <input name="txtKeyword"  type="text" placeholder="Enter your keyword">
+            
+            <button type="submit" ><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <!-- /Search -->
+      </div>
+      <div class="pull-right">
+        <ul class="header-btns">
+          <!-- Account -->
+          <li class="header-account dropdown default-dropdown">
+            <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+              <div class="header-btns-icon">
+                <i class="fa fa-user-o"></i>
+              </div>
+              <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
+            </div>							
+            <%  if (session.customer) {  %>
+              Hello <b><%=session.customer.name%></b> 
+              <ul class="custom-menu">
+                <li><a href="./myprofile"><i class="fa fa-user-o"></i> My Account</a></li>									
+                <li><a href="./myorders"><i class="fa fa-check"></i> My Order</a></li>	
+                <li><a href="./logout"><i class="fa fa-close"></i> Log out</a></li>										
+              </ul>
+              <%  } else {  %>
+            <ul class="custom-menu">
+              <li><a href="./login"><i class="fa fa-unlock-alt"></i> Login</a></li>
+              <li><a href="./signup"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+            </ul>
+            <%  } %> 
+          </li>
+          <!-- /Account -->
+
+          <!-- Cart -->
+          <li class="header-cart dropdown default-dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              <div class="header-btns-icon">
+                <i class="fa fa-shopping-cart"></i>
+                <span class="qty"><%= (session.mycart) ? session.mycart.length : 0 %></span>
+              </div>
+              <strong class="text-uppercase">My Cart:</strong>
+              <br>
+              <span><a href="./mycart">View Cart</a></span>
+            </a>
+            
+          </li>
+          <!-- /Cart -->
+
+          <!-- Mobile nav toggle-->
+          <li class="nav-toggle">
+            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+          </li>
+          <!-- / Mobile nav toggle -->
+        </ul>
+      </div>
+    </div>
+    <!-- header -->
+  </div>
+  <!-- container -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<div id="navigation">
+  <!-- container -->
+  <div class="container">
+    <div id="responsive-nav">
+      <!-- category nav -->
+      <div class="category-nav show-on-click">
+        <span class="category-header">Categories <i class="fa fa-list"></i></span>
+        <ul class="category-list">	
+         <%  if (typeof(cats) !== 'undefined') { for (var cat of cats) { %>					
+          <li><a href="./listproduct?catID=<%=cat._id%>"><%=cat.name%></a></li>						
+          <%  } } %>
+        </ul>
+      </div>
+      <!-- /category nav -->
+
+      <!-- menu nav -->
+      <div class="menu-nav">
+        <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+        <ul class="menu-list">
+          <li><a href="./home">Home</a></li>
+          
+          
+          
+        </ul>
+      </div>
+      <!-- menu nav -->
+    </div>
+  </div>
+  <!-- /container -->
+</div>
+<!-- /NAVIGATION -->
+
+
+
+

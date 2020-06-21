@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>E-SHOP HTML Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <%- include('./_menu.ejs') %>
+  
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!--  Product Details -->
+            <div class="product product-details clearfix">
+                <div class="col-md-6">
+                    <div id="product-main-view">
+                        <div class="product-view">
+                          <img src="data:image/jpg;base64,<%=prod.image%>" width="400" height="400" />
+                        </div>
+  
+                    </div>
+  
+                </div>
+                <div class="col-md-6">
+                    <div class="product-body">
+                        <div class="product-label">
+                            <span>New</span>
+                            <span class="sale">-20%</span>
+                        </div>
+                        <h2 class="product-name">TÊN SP:<%=prod.name%></h2>
+                        <h3 class="product-price">GIÁ :<%=prod.price%></h3>                                          
+                        <p>
+                          LOẠI SP: <%=prod.category.name%>
+                        </p>                   
+                        <div class="product-btns">
+                            <form action="./add2cart" method="POST"> 
+                              <input type="hidden" name="txtID" value="<%=prod._id%>" />                            
+                                <div class="qty-input">
+                                    <span class="text-uppercase">QTY: </span>
+  
+                                    <input name="txtQuantity" class="input" type="number" value="1" min="1" max=99>
+                                </div>
+                                <input type="submit" value="ADD TO CART" />
+  
+  
+                            </form>
+  
+                        </div>
+                    </div>
+                </div>
+               
+  
+            </div>
+            <!-- /Product Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <%- include('./_inform.ejs') %>
+</body>
+
+
+
+</html>
